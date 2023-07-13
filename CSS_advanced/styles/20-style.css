@@ -160,12 +160,11 @@ ul.row {
     padding: var(--footer-padding);
 }
 
-.row:after {
+.row::after {
     content: "";
     display: table;
     clear: both;
 }
-
 
 :root {
 
