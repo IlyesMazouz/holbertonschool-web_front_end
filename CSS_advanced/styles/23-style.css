@@ -171,9 +171,6 @@ ul.row {
     margin-right: auto;
 }
 
-.footer {
-    padding: var(--footer-padding);
-}
 
 .row::after {
     content: "";
