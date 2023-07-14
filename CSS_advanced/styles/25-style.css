@@ -17,6 +17,14 @@ body {
     line-height: var(--line-height-base);
 }
 
+[data-section-theme="dark"] {
+    --text-color: var(--color-white);
+    --section-title-color: var(--color-white);
+    background-color: var(--color-black);
+    --button-color: var(--color-white);
+}
+
+
 h1,
 h2,
 h3,
@@ -73,6 +81,7 @@ a:hover {
 a:active {
     background-color: var(--color-light-grey);
 }
+
 .button {
     display: var(--button-display);
     padding: var(--button-padding);
@@ -209,13 +218,6 @@ ul.row {
     content: "";
     display: table;
     clear: both;
-}
-
-[data-section-theme="dark"] {
-    --text-color: var(--color-white);
-    --section-title-color: var(--color-white);
-    background-color: var(--color-black);
-    --button-color: var(--color-white);
 }
 
 :root {
