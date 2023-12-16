@@ -1,0 +1,10 @@
+// Sass file that assigns Text color red to any elements of class .red that are the first children of the body
+
+body {
+	color: #3D3D3D;
+  
+	> .red {
+	  color: #FF0000;
+	}
+  }
+  
