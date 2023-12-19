@@ -1,0 +1,10 @@
+// Sass file that creates class for each name in list $list-names and assigns background image based on name:
+// using @import and @each statement
+
+@import "11-photos.scss ";
+
+@each $name in $list-names {
+  .photo-#{$name} {
+    background: image-url("photos/#{$name}.jpg") no-repeat;
+  }
+}
