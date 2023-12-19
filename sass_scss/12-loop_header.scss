@@ -1,0 +1,8 @@
+// Sass file that creates H* tags, where ‘*’ is size of font used
+
+@for $i from 1 through 5 {
+	h#{$i} {
+	  font-size: #{$i}px;
+	}
+  }
+  
