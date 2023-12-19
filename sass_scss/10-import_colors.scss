@@ -1,0 +1,20 @@
+// a Sass file that assigns:
+// Text color $red from 10-colors.scss to the class .red
+// Text color $green from 10-colors.scss to the class .green
+// Text color $blue from 10-colors.scss to the class .blue
+// using @import
+
+@import "10-colors";
+
+.red {
+	color: #FF0000;
+  }
+  
+  .green {
+	color: #00FF00;
+  }
+  
+  .blue {
+	color: #0000FF;
+  }
+  
