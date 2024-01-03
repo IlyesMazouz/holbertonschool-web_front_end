@@ -1,0 +1,17 @@
+.hero-homepage {
+    background-position: 65% 8rem;
+    background-size: 90rem auto;
+  }
+  
+.section-hero .section-inner {
+    min-height: 35vh;
+  }
+
+.container {
+    margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 960px; 
+  width: 100%; 
+  }
