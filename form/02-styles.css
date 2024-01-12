@@ -670,10 +670,10 @@
         margin: 0;
     }
 
-    .post-comments form fieldset {
+    fieldset {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         border: none;
         padding: 0 0 2rem;
-      }
+    }
