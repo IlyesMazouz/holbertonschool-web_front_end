@@ -375,7 +375,7 @@ a:active {
     white-space: nowrap;
 }
 
-off-screen {
+.off-screen {
     left: -100vw;
     position: absolute;
 }
