@@ -1,5 +1,4 @@
 function countPrimeNumbers() {
-    // Function to check if a number is prime
     function isPrime(num) {
         if (num <= 1) return false;
         if (num === 2) return true;
@@ -10,7 +9,6 @@ function countPrimeNumbers() {
         return true;
     }
 
-    // Count prime numbers from 2 to 100
     let count = 0;
     for (let i = 2; i <= 100; i++) {
         if (isPrime(i)) {
@@ -21,7 +19,6 @@ function countPrimeNumbers() {
     return count;
 }
 
-// Measure the time needed to execute the function
 const t0 = performance.now();
 const primeCount = countPrimeNumbers();
 const t1 = performance.now();
