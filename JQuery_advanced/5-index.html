@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Tree</title>
+<style>
+  .remove-cell {
+    background-color: orange;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<script>
+  function createFamilyTree() {
+    const table = document.createElement('table');
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const firstNameHeader = document.createElement('th');
+    firstNameHeader.textContent = 'Firstname';
+    const lastNameHeader = document.createElement('th');
+    lastNameHeader.textContent = 'Lastname';
+    headerRow.appendChild(firstNameHeader);
+    headerRow.appendChild(lastNameHeader);
+    thead.appendChild(headerRow);
+
+    const tbody = document.createElement('tbody');
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    document.body.appendChild(table);
+  }
+
+  function addNewMember(firstName, lastName) {
+    const tbody = document.querySelector('table tbody');
+
+    const newRow = document.createElement('tr');
+
+    const firstNameCell = document.createElement('td');
+    firstNameCell.textContent = firstName;
+    const lastNameCell = document.createElement('td');
+    lastNameCell.textContent = lastName;
+    const removeCell = document.createElement('td');
+    removeCell.textContent = '(x)';
+    removeCell.classList.add('remove-cell');
+    removeCell.addEventListener('click', function() {
+      newRow.remove();
+    });
+
+    newRow.appendChild(firstNameCell);
+    newRow.appendChild(lastNameCell);
+    newRow.appendChild(removeCell);
+
+    tbody.appendChild(newRow);
+  }
+
+  createFamilyTree();
+
+  addNewMember('Guillaume', 'Salva');
+  addNewMember('Arielle', 'Snizt');
+  addNewMember('Fanette', 'Snizt');
+  addNewMember('Gerard', 'Snizt');
+  addNewMember('Victor', 'Salva');
+</script>
+
+</body>
+</html>
