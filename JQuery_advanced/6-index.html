@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Tree</title>
+<style>
+  .remove-cell {
+    background-color: orange;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<script>
+  function createFamilyTree() {
+    const table = document.createElement('table');
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const firstNameHeader = document.createElement('th');
+    firstNameHeader.textContent = 'Firstname';
+    const lastNameHeader = document.createElement('th');
+    lastNameHeader.textContent = 'Lastname';
+    headerRow.appendChild(firstNameHeader);
+    headerRow.appendChild(lastNameHeader);
+    thead.appendChild(headerRow);
+
+    const tbody = document.createElement('tbody');
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    document.body.appendChild(table);
+  }
+
+  function addNewMember(firstName, lastName, position) {
+    const tbody = document.querySelector('table tbody');
+
+    const newRow = document.createElement('tr');
+
+    const firstNameCell = document.createElement('td');
+    firstNameCell.textContent = firstName;
+    const lastNameCell = document.createElement('td');
+    lastNameCell.textContent = lastName;
+    const removeCell = document.createElement('td');
+    removeCell.textContent = '(x)';
+    removeCell.classList.add('remove-cell');
+    removeCell.addEventListener('click', function() {
+      newRow.remove();
+    });
+
+    newRow.appendChild(firstNameCell);
+    newRow.appendChild(lastNameCell);
+    newRow.appendChild(removeCell);
+
+    if (position === 'before') {
+      tbody.prepend(newRow);
+    } else {
+      tbody.appendChild(newRow);
+    }
+  }
+
+  function createForm() {
+    const form = document.createElement('form');
+
+    const firstNameInput = document.createElement('input');
+    firstNameInput.type = 'text';
+    firstNameInput.placeholder = 'Enter Firstname';
+
+    const lastNameInput = document.createElement('input');
+    lastNameInput.type = 'text';
+    lastNameInput.placeholder = 'Enter Lastname';
+
+    const positionSelect = document.createElement('select');
+    const beforeOption = document.createElement('option');
+    beforeOption.value = 'before';
+    beforeOption.textContent = 'Before';
+    const afterOption = document.createElement('option');
+    afterOption.value = 'after';
+    afterOption.textContent = 'After';
+    positionSelect.appendChild(beforeOption);
+    positionSelect.appendChild(afterOption);
+
+    const submitButton = document.createElement('input');
+    submitButton.type = 'submit';
+    submitButton.value = 'Add Member';
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const firstName = firstNameInput.value;
+      const lastName = lastNameInput.value;
+      const position = positionSelect.value;
+      addNewMember(firstName, lastName, position);
+    });
+
+    form.appendChild(firstNameInput);
+    form.appendChild(lastNameInput);
+    form.appendChild(positionSelect);
+    form.appendChild(submitButton);
+
+    document.body.insertBefore(form, document.querySelector('table'));
+  }
+
+  createFamilyTree();
+
+  createForm();
+</script>
+
+</body>
+</html>
