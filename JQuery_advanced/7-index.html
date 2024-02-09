@@ -26,19 +26,15 @@
 
 <script>
   function createSearchForm() {
-    // Create form elements
     const form = $("<form>");
     const searchInput = $("<input>").attr("type", "text");
     const submitInput = $("<input>").attr("type", "submit").val("Search");
     const resultUl = $("<ul>");
 
-    // Append elements to form
     form.append(searchInput, submitInput, resultUl);
 
-    // Append form to body
     $("body").append(form);
 
-    // Add submit event listener
     form.on("submit", function(event) {
       event.preventDefault();
       const searchText = searchInput.val();
@@ -47,25 +43,19 @@
   }
 
   function addNewArticle(id, title, snippet) {
-    // Create list item
     const li = $("<li>");
 
-    // Create paragraphs
     const idParagraph = $("<p>").html("<span>ID - </span><b>" + title + "</b>");
     const snippetParagraph = $("<p>").html(snippet);
 
-    // Append paragraphs to list item
     li.append(idParagraph, snippetParagraph);
 
-    // Append list item to result ul
     $("ul").append(li);
   }
 
   function queryWikipedia(search) {
-    // API URL
     const apiUrl = "https://en.wikipedia.org/w/api.php";
 
-    // Data for API request
     const requestData = {
       action: "query",
       list: "search",
@@ -74,14 +64,12 @@
       origin: "*"
     };
 
-    // Perform AJAX request
     $.ajax({
       url: apiUrl,
       data: requestData,
       dataType: "json",
       success: function(data) {
         const results = data.query.search;
-        // Iterate over results and call addNewArticle
         results.forEach(function(result) {
           addNewArticle(result.pageid, result.title, result.snippet);
         });
@@ -92,7 +80,6 @@
     });
   }
 
-  // Call the createSearchForm function when the page loads
   $(document).ready(function() {
     createSearchForm();
   });
