@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posts List</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<script>
+  function addPostRow(data) {
+    const paragraph = $("<p>").html("Post created with id <span>ID: " + data.id + "</span>, title: " + data.title + ", author: " + data.author);
+    $("body").append(paragraph);
+  }
+
+  function listPosts() {
+    $.get("http://localhost:3000/posts", function(data, status) {
+      if (status === "success") {
+        data.forEach(function(post) {
+          addPostRow(post);
+        });
+      } else {
+        alert("Server Error");
+      }
+    });
+  }
+
+  function buildForm() {
+    const form = $("<form>");
+    
+    const authorDiv = $("<div>").append($("<label>").attr("for", "author").text("Author"));
+    authorDiv.append($("<input>").attr("type", "text").attr("id", "author"));
+    
+    const titleDiv = $("<div>").append($("<label>").attr("for", "title").text("Title"));
+    titleDiv.append($("<textarea>").attr("id", "title"));
+    
+    form.append(authorDiv, titleDiv, $("<input>").attr("type", "submit"));
+
+    $("body").append(form);
+
+    $("label").on("click", function() {
+      $(this).next().focus();
+    });
+
+    $("input[type='text']").keypress(function(event) {
+      if (event.which == 13) {
+        event.preventDefault();
+        $("form").submit();
+      }
+    });
+
+    form.on("submit", function(event) {
+      event.preventDefault(); 
+
+      $("form").after("About to send the query to the API"); 
+
+      const postData = {
+        title: $("#title").val(),
+        author: $("#author").val()
+      };
+
+      $.post("http://localhost:3000/posts", postData)
+        .done(function(data) {
+          addPostRow(data);
+        })
+        .fail(function() {
+          alert("Error sending the POST query");
+        });
+    });
+  }
+
+  $(document).ready(function() {
+    listPosts();
+    buildForm();
+  });
+</script>
+
+</body>
+</html>
