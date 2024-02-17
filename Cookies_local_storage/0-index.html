@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Management</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="firstname" placeholder="First Name">
+        <input type="text" id="email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button>
+        <button onclick="showCookies()">Show the cookies</button>
+    </div>
+    <div id="cookiesDisplay"></div>
+
+    <script>
+        function setCookies() {
+            var firstName = document.getElementById("firstname").value;
+            var email = document.getElementById("email").value;
+            document.cookie = "firstname=" + firstName;
+            document.cookie = "email=" + email;
+        }
+
+        function showCookies() {
+            var cookies = document.cookie.split(';');
+            var cookiesText = "Cookies: ";
+            for (var i = 0; i < cookies.length; i++) {
+                var cookieParts = cookies[i].trim().split('=');
+                cookiesText += cookieParts[0] + ": " + cookieParts[1] + ", ";
+            }
+            var p = document.createElement('p');
+            p.innerHTML = cookiesText;
+            document.getElementById("cookiesDisplay").appendChild(p);
+        }
+    </script>
+</body>
+</html>
