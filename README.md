@@ -21,3 +21,5 @@ Bootstrap
 JavaScript Advanced
 
 jQuery Advanced
+
+Cookies local storage
